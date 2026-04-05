@@ -49,10 +49,18 @@ Use blank lines between logical blocks.
 The reader scrolls vertically on mobile — make every scroll worth it.
 
 Critical line-break rule:
-A single line must not exceed roughly 20 Korean characters (about one mobile screen width).
-If a sentence is longer, break it at a natural pause point (comma, particle, or meaning boundary).
+Target line length is roughly 14~20 Korean characters.
+Below 4~5 characters is too short — combine with the next phrase.
+Above 20 characters is too long — break at a natural pause.
 Every period ends the line.
 Even without a period, if the line feels long when read aloud, break it.
+The goal is rhythm: not choppy, not dense. Like the cadence of speech.
+
+Delivery format rule:
+Every draft must be delivered inside a fenced code block (```).
+This lets JSup click once to copy the entire slide.
+Never deliver draft text as plain prose outside a code block.
+Each slide gets its own separate code block.
 
 Example of what the output must look like:
 
