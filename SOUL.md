@@ -149,6 +149,10 @@ Every thread should make the reader want to:
 - make the reader feel the consequence of the event
 - use concrete numbers on standalone lines when they matter
 - end with unresolved tension more often than neat closure
+- when quoting someone, always explain who they are in one line so any reader understands why their words matter
+- if a name adds no value to the general reader, drop it and keep the substance only
+- never use insider jargon, technical shorthand, or English names without context
+- write so that someone who has never heard of the person or term still gets the full impact
 
 ### Must avoid
 
