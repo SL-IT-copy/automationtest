@@ -39,6 +39,106 @@ Do not collapse a high-stakes story into a weak short post just because it is ea
 - no bloated setup paragraphs
 - no fake neutrality when the facts point clearly in one direction
 
+## Formatting rules (non-negotiable)
+
+### Vertical readability
+
+Every sentence must be its own line.
+Never pack two sentences into one line.
+Use blank lines between logical blocks.
+The reader scrolls vertically on mobile — make every scroll worth it.
+
+Critical line-break rule:
+A single line must not exceed roughly 20 Korean characters (about one mobile screen width).
+If a sentence is longer, break it at a natural pause point (comma, particle, or meaning boundary).
+Every period ends the line.
+Even without a period, if the line feels long when read aloud, break it.
+
+Example of what the output must look like:
+
+```
+세계에서 가장 큰 무인택시 회사.
+누적 3억 km 주행.
+사고율 "거의 0".
+
+그 회사의 차 100대가
+어젯밤 도시 한복판에서
+동시에 멈춤.
+
+승객은 차 안에 갇혔고,
+고속도로에선 추돌사고.
+
+이 회사,
+한국에도 이미 들어와 있음.
+```
+
+Another example (Oracle layoffs style):
+
+```
+3월 31일 아침 6시.
+미국, 인도, 캐나다, 멕시코.
+Oracle 직원들 이메일함에
+같은 메일이 도착함.
+
+보낸 사람: "Oracle Leadership."
+
+내용: 당신의 직책이 폐지됐고
+오늘이 마지막 근무일입니다.
+
+HR 사전 통보 없음.
+직속 상관 연락 없음.
+이메일 한 통.
+시스템 접근 즉시 차단.
+```
+
+Never write dense paragraphs.
+Never combine multiple facts into one blob.
+If you would pause when reading it aloud, that is where the line break goes.
+
+### Link completeness
+
+Every link must be the full URL.
+Never truncate with `…` or `...`.
+Always verify the link renders correctly before including it.
+
+### Copy-paste readiness
+
+The draft must be directly pasteable into Threads.
+No markdown formatting in the final copy.
+No bullet points, no headers, no bold markers.
+Just clean text with line breaks.
+
+## Quality gates (apply to every draft)
+
+### Source verification
+
+Claude takes full responsibility for fact-checking.
+JSup should not need to double-check basic claims.
+Every core claim must trace to a named, dated, linkable source.
+If a claim cannot be verified, remove it or mark it explicitly uncertain.
+
+### Follower conversion test
+
+Before finalizing, check:
+- would a first-time reader follow this account after reading this?
+- does the thread demonstrate expertise, not just information relay?
+- is there a reason to come back for the next post?
+
+### Ceiling maximization
+
+Write for millions of views, not thousands.
+Universal stakes > insider trivia.
+Emotional consequence > technical detail.
+If a topic cannot structurally reach 100k+ views, say so and recommend a different angle.
+
+### Funnel awareness
+
+Every thread should make the reader want to:
+1. finish reading (retention),
+2. check the profile (curiosity),
+3. follow (value promise),
+4. come back (consistency signal).
+
 ## Channel principles
 
 ### Must do
@@ -129,7 +229,12 @@ When JSup asks for a real draft, the answer should usually contain:
 
 1. recommended angle,
 2. why this topic now,
-3. 7-slide draft,
-4. core evidence,
-5. recommended cover image options,
-6. fact-check risks.
+3. 검증 A / 검증 B / 정합성 판단,
+4. 관심도 / 구조 점검,
+5. 7-slide draft (copy-paste ready, vertical format, full links),
+6. core evidence with full URLs,
+7. recommended cover image options with source links,
+8. fact-check risks.
+
+The 7-slide draft must be directly pasteable into Threads without any editing.
+No markdown. No formatting artifacts. Just clean vertical text.
