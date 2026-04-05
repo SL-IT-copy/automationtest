@@ -1,81 +1,137 @@
-# Threads 자동화 워크플로
+# Workflow
 
-OpenClaw가 자동으로 콘텐츠를 준비하고, Telegram으로 보내주면 리뷰/승인합니다.
+## Default working style
 
-## 자동 모드 (크론잡 설정 후)
+This repo now supports two workflows.
 
-매일 아침 Telegram에 자동으로 초안이 도착합니다.
+### 1. Direct Claude workflow
 
-### 초안 도착 시
+Use this when JSup is actively in session and wants a result immediately.
 
-```
-🤖 봇:
-🧵 Threads 초안 #1
+This is the **canonical** workflow.
 
-📝 내용:
-GPT-5 발표 후 24시간이 지났다.
-솔직한 감상: 데모는 인상적이었지만,
-실제로 내 작업 방식을 바꿀 건 "커스텀 에이전트" 기능이다.
-여러분은 어떤 기능이 가장 기대되나요?
+There is no separate LLM runner script in v1.
+The writing pipeline runs inside the Claude session itself.
 
-🏷️ 태그: AI
-📊 유형: 트렌드 코멘터리
-⏰ 추천: 오늘 09:00
+Typical request:
 
-✅ "올려줘" → 게시 | ✏️ 수정사항 → 알려주세요
+```text
+Anthropic 최신 이슈 글 써줘
 ```
 
-### 내가 할 수 있는 응답
+Expected result:
 
-| 응답 | 결과 |
-|------|------|
-| "올려줘" | 바로 Threads에 게시 |
-| "1번 올려줘" | 초안 1번만 게시 |
-| "톤 좀 더 캐주얼하게" | 수정 후 다시 보여줌 |
-| "이건 패스" | 건너뜀 |
+- best angle,
+- evidence-backed draft,
+- visual recommendation,
+- fact-check risks,
+- dual verification result.
 
-### 게시 완료 시
+This is the preferred workflow for high-quality editorial work.
 
-```
-🤖 봇: ✅ 게시 완료! Post ID: 12345678
-```
+### 2. OpenClaw / Telegram workflow
 
-## 수동 모드 (Telegram에서 직접 요청)
+Use this when JSup wants remote prompting, scheduled scouting, or review on phone.
 
-크론잡 외에도, 언제든 Telegram에서 봇에게 직접 요청 가능:
+That flow is documented in `DEPLOY.md`.
 
-| 하고 싶은 것 | Telegram에 입력 |
-|-------------|----------------|
-| 글 요청 | "AI 트렌드에 대한 스레드 써줘" |
-| 여러 개 요청 | "오늘 올릴 글 3개 초안 만들어줘" |
-| 특정 주제 | "이 뉴스에 대한 코멘터리: [내용]" |
-| 성과 확인 | "오늘 포스트 성과 어때?" |
-| 최근 글 | "최근에 올린 글 보여줘" |
-| 게시 한도 | "오늘 몇 개 더 올릴 수 있어?" |
-| 토큰 갱신 | "토큰 갱신해줘" |
+It is optional.
 
-### 팁: 더 좋은 결과를 위해 구체적으로
+## Authentication split
 
-```
-"AI 에이전트가 2026년에 어떻게 바뀔지에 대한 핫테이크 써줘.
-구체적인 예시 하나 포함하고, 질문으로 끝나게."
+- **content generation**: happens here, inside Claude
+- **Threads posting/auth**: can use OAuth / Meta token flow later when posting is needed
+
+## Direct Claude commands
+
+### Topic scout only
+
+```text
+오늘 쓸 만한 AI 주제 3개만 골라줘.
+조회수 ceiling, 반복 리스크까지 같이.
 ```
 
+### Full draft pack
+
+```text
+Anthropic 최신 이슈로 7슬라이드 쓰레드 써줘.
+커버는 1차 출처 스샷 위주로 추천해줘.
+팩트체크 위험한 부분은 표시해.
 ```
-"지난주 가장 인게이지먼트 높았던 글 분석해주고,
-비슷한 스타일로 새 글 써줘"
+
+### Revision on same topic
+
+```text
+이 topic 유지하고
+후킹만 더 세게 바꿔줘.
+결론은 덜 빨리 드러나게.
 ```
 
-## 주간 루틴
+### Performance diagnosis
 
-| 시점 | 자동 | 내가 하는 것 |
-|------|------|-------------|
-| 평일 아침 | 봇이 초안 2개 전송 | 리뷰 → "올려줘" |
-| 평일 저녁 | 봇이 성과 알림 (선택) | 답글 초안 확인 |
-| 금요일 오후 | 봇이 주간 리포트 전송 | 다음 주 전략 확인 |
+```text
+이 글 왜 약했는지 분석해줘.
+후킹, topic ceiling, protagonist, close 기준으로.
+```
 
-## 주의사항
+## Standard output shape
 
-- 토큰은 60일마다 갱신 필요 (자동 크론잡으로 45일마다 갱신 설정 가능)
-- 하루 3개 이하 게시 권장 (알고리즘 최적)
-- `config/.env`는 절대 git에 커밋하지 마세요
+For serious requests, Claude should return these sections in order:
+
+1. `추천 주제 / 각도`
+2. `왜 지금 이건지`
+3. `검증 A 결과`
+4. `검증 B 결과`
+5. `최종 정합성 판단`
+6. `관심도 / 구조 점검`
+7. `7슬라이드 초안`
+8. `핵심 근거 3개`
+9. `추천 커버 / 스샷 아이디어`
+10. `팩트체크 리스크`
+
+## Double-check rule
+
+The workflow is now designed so that:
+
+1. one verifier checks source accuracy,
+2. a second verifier checks the same topic independently,
+3. a reconciler decides what survives,
+4. a structural-interest review checks whether the framing is actually likely to attract broad attention.
+
+If the two verifiers disagree on a core fact, that claim should not pass through silently.
+
+If the interest review says the topic is structurally weak, the system should recommend changing the angle instead of forcing a draft.
+
+## Review loop
+
+Typical review replies:
+
+- `이걸로 가자`
+- `후킹만 다시`
+- `너무 결론 빨리 나옴`
+- `팩트 다시 봐`
+- `Anthropic 또 나와서 피로함. 다른 topic으로`
+
+Claude should treat these as direct editing instructions, not as invitations to restart the whole topic unless asked.
+
+## Reference usage rule
+
+Reference files are there to learn:
+
+- hook shapes,
+- pacing,
+- reversal placement,
+- close patterns,
+- what low-ceiling topics look like.
+
+Reference files are not there to be paraphrased line by line.
+
+## File map
+
+- `SOUL.md`: account identity and editorial rules
+- `docs/DIRECT_CLAUDE_WORKFLOW.md`: direct creation pipeline
+- `docs/PIPELINE_ARCHITECTURE_V1.md`: enforced dual-verification architecture
+- `prompts/THREADS_PIPELINE_PROMPTS.md`: reusable prompt chain
+- `schemas/thread_run_output.json`: structured output target
+- `references/README.md`: reference ingestion and retrieval rules
+- `DEPLOY.md`: remote OpenClaw flow

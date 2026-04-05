@@ -1,6 +1,6 @@
-# Threads API 초기 설정 가이드
+# Threads OAuth / API 초기 설정 가이드
 
-이 가이드를 한 번만 따라하면 OpenClaw(또는 Claude Code)에서 Threads에 게시할 수 있습니다.
+이 가이드를 한 번만 따라하면 Threads OAuth 토큰 흐름으로 게시 준비를 할 수 있습니다.
 
 ## Step 1: Meta 개발자 앱 생성
 

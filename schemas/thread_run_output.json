@@ -1,0 +1,125 @@
+{
+  "request": "Anthropic 최신 이슈 글 써줘",
+  "mode": "full_draft_pack",
+  "topic_recommendation": {
+    "final_topic": "string",
+    "angle": "string",
+    "why_now": [
+      "string"
+    ],
+    "viral_ceiling_score": 0,
+    "repetition_risk_score": 0
+  },
+  "fact_pack": {
+    "hard_facts": [
+      {
+        "claim": "string",
+        "source": "string",
+        "url": "string",
+        "quote": "string",
+        "published_at": "string"
+      }
+    ],
+    "uncertainties": [
+      "string"
+    ],
+    "rejected_claims": [
+      {
+        "claim": "string",
+        "reason": "string"
+      }
+    ]
+  },
+  "verification": {
+    "verifier_a": {
+      "overall_status": "pass | caution | fail",
+      "verified_facts": [
+        {
+          "claim": "string",
+          "verdict": "verified | caution | reject",
+          "evidence_url": "string",
+          "note": "string"
+        }
+      ],
+      "disputed_facts": [
+        {
+          "claim": "string",
+          "reason": "string"
+        }
+      ]
+    },
+    "verifier_b": {
+      "overall_status": "pass | caution | fail",
+      "verified_facts": [
+        {
+          "claim": "string",
+          "verdict": "verified | caution | reject",
+          "evidence_url": "string",
+          "note": "string"
+        }
+      ],
+      "disputed_facts": [
+        {
+          "claim": "string",
+          "reason": "string"
+        }
+      ]
+    },
+    "reconciliation": {
+      "final_publishability": "pass | caution | fail",
+      "agreed_facts": [
+        "string"
+      ],
+      "disputed_facts": [
+        {
+          "claim": "string",
+          "a_reason": "string",
+          "b_reason": "string",
+          "final_action": "keep | remove | flag"
+        }
+      ],
+      "removed_claims": [
+        "string"
+      ]
+    },
+    "interest_review": {
+      "ceiling_score": 0,
+      "repetition_risk": 0,
+      "strongest_hook_direction": "string",
+      "structural_risks": [
+        "string"
+      ],
+      "recommendation": "proceed | revise_angle | abandon_topic"
+    }
+  },
+  "draft": {
+    "title_angle": "string",
+    "slides": [
+      {
+        "slide": 1,
+        "text": "string"
+      }
+    ],
+    "source_footer": "string",
+    "follow_cta": "string"
+  },
+  "visual_plan": [
+    {
+      "option_name": "string",
+      "visual_type": "screenshot | chart | leaderboard | quote-card",
+      "source_url": "string",
+      "capture_target": "string",
+      "why_this_works": "string",
+      "fallback_prompt": "string"
+    }
+  ],
+  "editor_notes": {
+    "biggest_strength": "string",
+    "biggest_risk": "string",
+    "fact_check_flags": [
+      "string"
+    ],
+    "recommended_next_action": "revise | approve | research_more",
+    "approval_gate": "blocked_if_final_publishability_is_fail"
+  }
+}

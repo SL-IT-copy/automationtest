@@ -1,0 +1,106 @@
+[
+  {
+    "id": "hn_top",
+    "label": "Hacker News Top Stories",
+    "kind": "api_json",
+    "url": "https://hacker-news.firebaseio.com/v0/topstories.json",
+    "priority": "high",
+    "use": "early discourse signal"
+  },
+  {
+    "id": "hn_best",
+    "label": "Hacker News Best Stories",
+    "kind": "api_json",
+    "url": "https://hacker-news.firebaseio.com/v0/beststories.json",
+    "priority": "high",
+    "use": "stronger validation of broad interest"
+  },
+  {
+    "id": "reddit_localllama_hot",
+    "label": "Reddit LocalLLaMA Hot",
+    "kind": "json_feed",
+    "url": "https://www.reddit.com/r/LocalLLaMA/hot.json?limit=25",
+    "priority": "high",
+    "use": "open-source and builder-native signal"
+  },
+  {
+    "id": "reddit_localllama_new",
+    "label": "Reddit LocalLLaMA New",
+    "kind": "json_feed",
+    "url": "https://www.reddit.com/r/LocalLLaMA/new.json?limit=25",
+    "priority": "high",
+    "use": "fresh discovery"
+  },
+  {
+    "id": "anthropic_news",
+    "label": "Anthropic News",
+    "kind": "html_page",
+    "url": "https://www.anthropic.com/news",
+    "priority": "high",
+    "use": "primary source"
+  },
+  {
+    "id": "anthropic_research",
+    "label": "Anthropic Research",
+    "kind": "html_page",
+    "url": "https://www.anthropic.com/research",
+    "priority": "high",
+    "use": "primary source"
+  },
+  {
+    "id": "anthropic_engineering",
+    "label": "Anthropic Engineering",
+    "kind": "html_page",
+    "url": "https://www.anthropic.com/engineering",
+    "priority": "high",
+    "use": "primary source"
+  },
+  {
+    "id": "openai_news",
+    "label": "OpenAI News",
+    "kind": "html_page",
+    "url": "https://openai.com/news/",
+    "priority": "high",
+    "use": "primary source"
+  },
+  {
+    "id": "techcrunch_ai",
+    "label": "TechCrunch Artificial Intelligence",
+    "kind": "rss_or_html",
+    "url": "https://techcrunch.com/category/artificial-intelligence/",
+    "priority": "medium",
+    "use": "mainstream amplification"
+  },
+  {
+    "id": "arxiv_cs_ai",
+    "label": "arXiv cs.AI",
+    "kind": "rss",
+    "url": "https://rss.arxiv.org/rss/cs.AI",
+    "priority": "medium",
+    "use": "research frontier"
+  },
+  {
+    "id": "arxiv_cs_cl",
+    "label": "arXiv cs.CL",
+    "kind": "rss",
+    "url": "https://rss.arxiv.org/rss/cs.CL",
+    "priority": "medium",
+    "use": "language model research"
+  },
+  {
+    "id": "arxiv_cs_lg",
+    "label": "arXiv cs.LG",
+    "kind": "rss",
+    "url": "https://rss.arxiv.org/rss/cs.LG",
+    "priority": "medium",
+    "use": "model and benchmark developments"
+  },
+  {
+    "id": "crunchbase_news",
+    "label": "Crunchbase News",
+    "kind": "rss",
+    "url": "https://news.crunchbase.com/feed/",
+    "priority": "low",
+    "use": "capital and funding context"
+  }
+]
