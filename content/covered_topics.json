@@ -1,0 +1,60 @@
+{
+  "_description": "이미 다룬 토픽 인덱스. 파이프라인 시작 시 자동 참조. 새 토픽 추천 전 반드시 이 목록과 대조할 것.",
+  "_updated": "2026-04-06",
+  "topics": [
+    {
+      "slug": "perplexity-incognito-sham",
+      "date": "2026-04-06",
+      "title": "Perplexity 시크릿 모드는 가짜였다",
+      "entities": ["Perplexity"],
+      "keywords": ["시크릿모드", "incognito", "개인정보", "Meta Pixel", "집단소송", "프라이버시"],
+      "theme": "AI 기업 신뢰 배신 — 프라이버시",
+      "file": "content/published/2026-04-06__perplexity-incognito-sham.md"
+    },
+    {
+      "slug": "medvi-one-person-billion",
+      "date": "2026-04-06",
+      "title": "Medvi — 2명이 5,600억 원 매출",
+      "entities": ["Medvi", "Hims & Hers"],
+      "keywords": ["1인기업", "AI자동화", "GLP-1", "원격진료", "Sam Altman 예언"],
+      "theme": "AI로 극소수 인력 대규모 비즈니스",
+      "file": "content/published/2026-04-06__medvi-one-person-billion.md"
+    },
+    {
+      "slug": "openai-122b-funding-structure",
+      "date": "2026-04-06",
+      "title": "OpenAI $122B — 허상의 구조",
+      "entities": ["OpenAI", "SoftBank", "Amazon", "ARK Invest", "Cathie Wood"],
+      "keywords": ["122B", "펀딩", "순환금융", "브릿지론", "손정의", "WeWork", "IPO", "개인투자자"],
+      "theme": "AI 투자 버블 / 금융 구조 해부",
+      "file": null
+    },
+    {
+      "slug": "anthropic-claude-code-leak",
+      "date": "2026-04-06",
+      "title": "Anthropic Claude Code 소스코드 51만 줄 유출",
+      "entities": ["Anthropic", "Claude Code"],
+      "keywords": ["npm", "소스코드유출", "KAIROS", "Undercover Mode", "DMCA", "Codex 재작성"],
+      "theme": "AI 기업 보안 실패 + 은폐 기능 발견",
+      "file": null
+    },
+    {
+      "slug": "oracle-30k-layoffs",
+      "date": "2026-04-06",
+      "title": "Oracle 3만 명 새벽 6시 해고",
+      "entities": ["Oracle"],
+      "keywords": ["해고", "AI데이터센터", "이메일해고", "구조조정"],
+      "theme": "AI 투자 위한 대량 해고",
+      "file": null
+    },
+    {
+      "slug": "china-robot-wolf-pack",
+      "date": "2026-04-06",
+      "title": "중국 AI 로봇 늑대 떼 — 총 든 로봇이 건물에 먼저 들어감",
+      "entities": ["PLA", "CCTV", "병기자동화연구소", "CZ"],
+      "keywords": ["로봇늑대", "로봇개", "군사AI", "스웜전투", "자율살상무기", "시가전", "유탄발사기", "暗影"],
+      "theme": "AI 군사화 / 자율무기 현실화",
+      "file": "content/published/2026-04-06__china-robot-wolf-pack.md"
+    }
+  ]
+}

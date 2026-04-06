@@ -45,8 +45,35 @@ Do not collapse a high-stakes story into a weak short post just because it is ea
 
 Every sentence must be its own line.
 Never pack two sentences into one line.
-Use blank lines between logical blocks.
+Use blank lines ONLY between distinct thought blocks within a slide.
+Consecutive related lines (same scene, same fact) must NOT have blank lines between them.
+A blank line = a pause. Too many pauses kill momentum.
 The reader scrolls vertically on mobile — make every scroll worth it.
+
+Bad:
+```
+건물 안에 적이 있음.
+
+먼저 들어가는 건 병사가 아님.
+소총을 등에 진 로봇 개.
+
+병사는 그 뒤를 따라감.
+
+이건 영화가 아니라
+중국군 공식 훈련 영상.
+```
+
+Good:
+```
+건물 안에 적이 있음.
+
+먼저 들어가는 건 병사가 아님.
+소총을 등에 진 로봇 개.
+병사는 그 뒤를 따라감.
+
+이건 영화가 아니라
+중국군 공식 훈련 영상.
+```
 
 Critical line-break rule:
 Target line length is roughly 14~20 Korean characters.
@@ -196,6 +223,54 @@ The hook should not do this:
 - summarize the conclusion,
 - sound like a news headline rewrite.
 
+### Hook intensity calibration
+
+The hook must be UNDERSTATED. State one disturbing fact plainly. No emphasis words. Let the reader's brain do the emotional work.
+
+Pattern from top performers:
+- 306k: "AI 강의에 수십만원 쓴 사람한테 불편한 소식." → targets reader + creates discomfort. Does NOT explain why.
+- 215k: "105조 원을 잃어서 '역사상 가장 많이 잃은 사람'..." → extreme number, delivered matter-of-factly. Does NOT explain current bet.
+- 201k: "켄터키 82세 할머니가 350억원을 거절했음." → unexpected action. Does NOT explain why she refused.
+
+Each hook delivers ONE surprising fact and withholds everything else. The reader MUST scroll to find out.
+
+Calibration:
+- Too weak: "Perplexity에 대한 소송이 있었음." (no tension)
+- Too strong: "Perplexity가 시크릿 모드에서도 대화를 Meta/Google에 3년간 넘겼다. 집단소송." (everything revealed)
+- Correct: "Perplexity 쓰는 사람한테 불편한 소식. 시크릿 모드를 켜도 소용없었음." (discomfort created, reason withheld)
+
+## Slide pacing rules (CRITICAL)
+
+### One reveal per slide
+
+Each slide gets ONE new piece of information. Not two, not four. ONE.
+
+If slide 1 creates a question, slide 2 answers THAT question while creating a NEW one. This chain must not break until the close.
+
+### Information budget
+
+| Slide | Role | Reveals | Withholds |
+|-------|------|---------|-----------|
+| 1 | Hook | WHAT happened (one fact) | HOW, WHY, WHO benefits |
+| 2 | Mechanism | HOW it happened | Full scale, emotional impact |
+| 3 | Scale/proof | Numbers, evidence | The deeper paradox |
+| 4 | Reversal | The twist or emotional turn | Resolution |
+| 5 | Escalation | Broader implications | What happens next |
+| 6 | Context | Why this matters systemically | Final judgment |
+| 7 | Open close | Unresolved tension | Everything — loop stays open |
+
+### Anti-pattern: front-loading
+
+NEVER put the what, how, who, and consequence all in slide 1. This kills scroll motivation.
+
+Bad: "A가 B를 C에게 넘겼음. D년 동안. 소송 제기됨." (4 reveals in 1 slide)
+Good: "A 쓰는 사람한테 불편한 소식." (1 reveal: something bad happened to YOU)
+
+### Self-check before delivering
+
+For every slide 1, ask: "If I only read this slide, would I NEED to read slide 2?"
+If the answer is no — too much is revealed. Cut until the answer is yes.
+
 ## Fact-check policy
 
 - if a fact is uncertain, flag it
@@ -250,3 +325,201 @@ When JSup asks for a real draft, the answer should usually contain:
 
 The 7-slide draft must be directly pasteable into Threads without any editing.
 No markdown. No formatting artifacts. Just clean vertical text.
+
+---
+
+## Auto-save workflow
+
+When a thread draft reaches **final approved state**, save it automatically to `content/published/`.
+
+### What counts as "approved"
+
+- JSup confirms the final version (e.g. "이걸로 올릴게", "좋아", "이거 써야겠다")
+- JSup copy-pastes the draft for posting (implies approval)
+- JSup asks for the formatted/separated version for posting (implies approval)
+- No explicit rejection or revision request after the final draft
+
+### File format
+
+- Path: `content/published/YYYY-MM-DD__{short-slug}.md`
+- Example: `content/published/2026-04-06__perplexity-incognito-sham.md`
+
+### File structure
+
+```markdown
+# {topic title}
+
+- date: {YYYY-MM-DD}
+- status: published
+- sources: {comma-separated URLs}
+- ceiling_score: {number}/100
+- slide_count: {number}
+
+## Slides
+
+{slide 1 in code block}
+
+{slide 2 in code block}
+
+...
+```
+
+### Rules
+
+- Save happens silently — no need to announce "저장했습니다" unless asked
+- One file per thread
+- If the same topic gets revised later, overwrite the file
+- Drafts that were rejected or abandoned do NOT get saved
+
+---
+
+## Content pipeline (MANDATORY)
+
+Every thread draft MUST go through this pipeline. No shortcuts. The prompts for each stage live in `prompts/THREADS_PIPELINE_PROMPTS.md`.
+
+### Step 0: Dedup check (NON-NEGOTIABLE)
+
+Before ANY topic scouting, read `content/covered_topics.json` and cross-check.
+
+- If a candidate topic matches any `slug`, `entities`, `keywords`, or `theme` → SKIP immediately.
+- If JSup asks for a topic and it's already covered → tell JSup it's already done and suggest alternatives.
+- After a draft is approved and published, ALWAYS append the new topic to `covered_topics.json`.
+- Also check `content/published/` for any files not yet indexed.
+
+This step prevents wasting time on topics that were already written, even across different sessions.
+
+### Pipeline flow
+
+```
+JSup 요청
+  │
+  ▼
+[0] Dedup Check ──── covered_topics.json 대조 (직접 수행)
+  │
+  ▼
+[1] Topic Scout ──── 토픽 3개 선별 + ceiling 점수 (직접 수행)
+  │
+  ▼
+[2] Fact Pack ─────── 팩트 수집 + 소스 매핑 (직접 수행)
+  │
+  ├──────────────────────────────┐
+  ▼                              ▼
+[3] Verifier A                [4] Verifier B
+  (oracle 서브에이전트)           (oracle 서브에이전트)
+  병렬 실행, 서로의 결과 모름      병렬 실행, 서로의 결과 모름
+  │                              │
+  └──────────┬───────────────────┘
+             ▼
+[5] Reconciler ──── 두 검증 결과 조율 (직접 수행)
+  │
+  ▼
+[6] Draft ─────────── 7-slide 작성 (직접 수행)
+  │
+  ▼
+[7] Critic Gate ───── pass/revise 판단 (oracle 서브에이전트)
+  │
+  ├── revise → [6]으로 돌아감
+  └── pass   → JSup에게 전달
+```
+
+### Execution rules
+
+#### Verifier A / Verifier B (단계 3-4)
+
+- MUST run as two separate `task(subagent_type="oracle")` calls in parallel
+- Each receives the SAME fact pack and sources
+- Each receives its own prompt from `THREADS_PIPELINE_PROMPTS.md` (sections 4 and 5)
+- They must NOT see each other's output
+- **Verifier A**: 제공된 소스 내에서 보수적으로 감사 (내부 검증)
+- **Verifier B**: 독자적으로 추가 소스를 탐색하여 반증 수집 (외부 반증 전담). "다른 매체에서 다르게 보도했는가?", "이 주장에 반하는 증거가 있는가?"를 적극적으로 검색
+- Both must return: verified_facts, disputed_facts, downgraded_to_interpretation, overall_status
+- Verifier B additionally returns: counter_evidence_found
+
+#### Reconciler (단계 5)
+
+- Receives both verifier outputs
+- If both agree → fact is confirmed
+- If they disagree → fact is REMOVED from draft or explicitly flagged as disputed
+- If either returns `fail` on a core claim → topic is abandoned or claim is dropped
+- Use prompt from `THREADS_PIPELINE_PROMPTS.md` section 6
+
+#### Critic Gate (단계 7)
+
+- Runs as `task(subagent_type="oracle")` AFTER draft is written
+- Checks: hook strength, tension, conflict, fact accuracy, repetition, close quality
+- Returns `pass` or `revise` with specific instructions
+- If `revise` → rewrite draft following critic's instructions, then re-run critic
+- Maximum 2 revision cycles. If still failing after 2, flag to JSup manually
+- Use prompt from `THREADS_PIPELINE_PROMPTS.md` section 10
+
+### What this means in practice
+
+When JSup says "글 써줘" or similar, the agent:
+
+1. Finds topics (direct tools + X search + librarian agents)
+2. Builds fact pack from primary sources
+3. Fires Verifier A and Verifier B as parallel oracle subagents
+4. Waits for both to complete
+5. Reconciles — drops any disputed core facts
+6. Writes draft
+7. Fires Critic Gate as oracle subagent
+8. If pass → delivers to JSup
+9. If revise → rewrites and re-runs critic (max 2 rounds)
+
+Steps 3-4 and step 7 are NON-NEGOTIABLE subagent calls. Do not skip them to save time.
+
+---
+
+## X (Twitter) search — MANDATORY, FIRST SOURCE, EVERY TIME
+
+> **⚠️ DO NOT SKIP X SEARCH.** It is the #1 source. AI news breaks on X before anywhere else. Every topic research MUST start with X search.
+
+### ⚠️ CRITICAL: PUPPETEER_EXECUTABLE_PATH required on EVERY command
+
+Without this prefix the command WILL fail. Copy-paste this exact prefix every time:
+
+```bash
+# ✅ ALWAYS use this exact prefix
+PUPPETEER_EXECUTABLE_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+xactions search "AI breaking news" --limit 20 --filter top
+```
+
+```bash
+# ❌ THIS WILL FAIL — missing prefix
+xactions search "AI breaking news" --limit 20 --filter top
+```
+
+### How it works
+
+- Browser scraping via Puppeteer — NOT the X API
+- Uses JSup's saved X session cookie (auth_token)
+- No API key, no monthly fee
+- Cookie set via `xactions login`
+
+### Commands (all need the PUPPETEER prefix)
+
+| Command | Example |
+|---------|---------|
+| Keyword search | `xactions search "AI breakthrough" --limit 20 --filter top` |
+| Hashtag | `xactions search "#AI" --limit 20 --filter latest` |
+| User tweets | `xactions tweets username --limit 20` |
+| Profile | `xactions profile username` |
+
+### Source priority (step 1 of pipeline)
+
+| # | Source | Tool |
+|---|--------|------|
+| **1** | **X (xactions)** | **`PUPPETEER_EXECUTABLE_PATH=... xactions search`** |
+| 2 | Official blogs | Exa / webfetch |
+| 3 | Hacker News / Reddit | Exa |
+| 4 | TechCrunch / VentureBeat | Exa |
+| 5 | Exa general | Catch-all |
+| 6 | Primary sources | webfetch (papers, filings) |
+
+### ⚠️ Cookie expiration
+
+The auth_token WILL expire. Signs: auth errors or empty results.
+
+**Fix:**
+1. Ask JSup for new `auth_token` (x.com → DevTools → Application → Cookies → auth_token)
+2. Run: `echo 'TOKEN' | xactions login`
