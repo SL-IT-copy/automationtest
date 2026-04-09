@@ -1,0 +1,38 @@
+version: 2
+mode: direct_claude_session
+default_output_mode: seven_slide_thread
+
+source_of_truth:
+  workflow: AGENTS.md
+  voice: SOUL.md
+  prompts: prompts/THREADS_PIPELINE_PROMPTS.md
+
+research:
+  x_search_required: true
+  x_search_first: true
+  min_external_sources: 3
+  prefer_primary_sources: true
+
+verification:
+  verifier_count: 2
+  verifier_a_role: conservative_source_auditor
+  verifier_b_role: counter_evidence_hunter
+  reconciliation_required: true
+  core_fact_disputes_block_publish: true
+
+drafting:
+  default_slide_count: 7
+  one_reveal_per_slide: true
+  full_urls_only: true
+  code_block_delivery: true
+
+critic_gate:
+  required: true
+  max_revision_rounds: 2
+
+autosave:
+  enabled: true
+  final_approval_required: true
+  save_review_artifacts: true
+  published_path: content/published
+  review_path: reviews

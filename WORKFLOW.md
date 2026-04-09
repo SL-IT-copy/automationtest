@@ -128,10 +128,15 @@ Reference files are not there to be paraphrased line by line.
 
 ## File map
 
-- `SOUL.md`: account identity and editorial rules
-- `docs/DIRECT_CLAUDE_WORKFLOW.md`: direct creation pipeline
-- `docs/PIPELINE_ARCHITECTURE_V1.md`: enforced dual-verification architecture
+- `AGENTS.md`: workflow source of truth and boundaries
+- `CLAUDE.md`: loader and precedence note for Claude/OpenCode
+- `SOUL.md`: account identity, voice, hooks, formatting taste
+- `config/*.yaml`: machine-readable process settings
+- `checklists/`: hook / fact / pacing / final release gates
+- `scripts/`: canonical X and validation entrypoints
+- `memory/`: hot / warm / cold memory
+- `reviews/`: verification artifacts archive
+- `content/covered_topics.json`: dedup / fatigue ledger
 - `prompts/THREADS_PIPELINE_PROMPTS.md`: reusable prompt chain
-- `schemas/thread_run_output.json`: structured output target
 - `references/README.md`: reference ingestion and retrieval rules
-- `DEPLOY.md`: remote OpenClaw flow
+- `DEPLOY.md`: optional remote OpenClaw flow

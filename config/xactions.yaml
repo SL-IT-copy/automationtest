@@ -1,0 +1,34 @@
+provider: xactions
+mode: browser_cookie_scraping
+api_required: false
+
+runner:
+  search_script: scripts/x-search.sh
+  profile_script: scripts/x-profile.sh
+  refresh_script: scripts/x-login-refresh.sh
+
+chrome:
+  executable_path: /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+  env_var_required: PUPPETEER_EXECUTABLE_PATH
+
+auth:
+  method: auth_token_cookie
+  stored_via: xactions login
+  repo_storage_allowed: false
+
+failure_signals:
+  - auth error
+  - empty results for obvious live query
+  - chrome not found
+
+refresh_procedure:
+  - ask JSup for fresh auth_token from browser devtools
+  - pipe token into scripts/x-login-refresh.sh via stdin only
+  - never pass token as positional CLI argument
+  - never store token in repo files or review artifacts
+
+default_queries:
+  - AI breaking news
+  - AI controversy
+  - Anthropic OpenAI Google AI
+  - Perplexity lawsuit privacy

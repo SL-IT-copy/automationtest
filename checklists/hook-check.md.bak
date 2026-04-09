@@ -1,0 +1,149 @@
+# Hook Check
+
+Before delivering any draft, slide 1 must pass this data-driven check.
+
+The rules are derived from JSup's own winning posts (100k+ views) versus weaker ones (<60k). They are not guesses.
+
+## S-tier pattern (required for ceiling > 80)
+
+Slide 1 must contain, in the first ~6 lines, AT LEAST:
+
+- **2 numbers** (concrete, no rounding to "많이" or "수많은")
+- **2 proper nouns** (company / person / place)
+- **1 time-specific marker** (어제 / 3월 26일 / 12개월 / 200년 / 48시간)
+- **1 extreme state word** (역사상 가장 / 시세의 10배 / 처음으로 / 같은 날 / 전부)
+- **1 of these two**: direct reader targeting ("~한테", "~쓰는 사람") OR an overwhelming scale number that targets nobody but forces attention
+
+Slide 1 should NOT try to be poetic or cinematic. Density beats rhythm.
+
+## Proven opening formulas (from JSup's own wins)
+
+### Formula A — Direct Target + Pattern
+Template: `{X}한 사람한테 불편한 소식. {시점1}. {시점2}. {시점3}. {회사1/2/3}가 {구체 동작}.`
+
+Source: 306k view post (AI 무료강의).
+```
+AI 강의에 수십만원 쓴 사람한테 불편한 소식.
+12월 OpenAI. 2월 Google. 3월 Anthropic.
+AI를 만든 회사 3곳이 3개월 연속으로
+무료 교육을 열었음. 수료증까지 줌.
+```
+
+Works when: the reader has already invested money/time in something that's about to be undercut.
+
+### Formula B — Extreme Title + Bigger Bet + Timer
+Template: `{과거 극단 숫자}를 {극단 동사}한 "{역사상 가장 X}" 타이틀을 가진 적 있는 {주어}가 이번엔 {새로운 극단 숫자}를 {새 동작}. {시한}이 붙어 있음.`
+
+Source: 215k/200k view post (손정의 OpenAI).
+```
+105조 원을 잃어서 "역사상 가장 많이 잃은 사람"
+타이틀을 가진 적 있는 사람이
+이번엔 90조 원을 AI 하나에 걸었음.
+12개월짜리 시한이 붙어 있는 상태로.
+```
+
+Works when: one protagonist has a track record of extreme wins AND extreme losses and is about to trigger the next chapter.
+
+### Formula C — Unexpected Subject + Extreme Action + Ratio
+Template: `{예상 밖 주어} {구체 동작} {구체 숫자}. {비교 기준}. {맥락 한 줄로}.`
+
+Source: 201k view post (켄터키 할머니).
+```
+켄터키 82세 할머니가 350억원을 거절했음.
+시세의 10배.
+이름도 안 밝힌 대형 테크 기업이
+농장 땅에 데이터센터 짓겠다고 한 건데.
+```
+
+Works when: the subject is someone the reader would NEVER expect to be the agent of a major corporate story.
+
+### Formula D — Company + Timestamp + Reaction Scale + Paradigm
+Template: `{회사}가 {시점} 공개한 {무엇}. {반응 숫자}. {같은 날 피해자}. {패러다임 선언}. {미끼 한 줄}.`
+
+Source: 109k view post (Google Stitch).
+```
+Google이 어제 공개한 AI 디자인 툴.
+발표 트윗 조회수 700만.
+같은 날 Adobe 주가 하락.
+말로 디자인하는 시대가 옴.
+무료로.
+Google이 직접 이름 붙임: "바이브 디자인."
+```
+
+Works when: a major player drops a product that creates immediate collateral damage to a named competitor.
+
+### Formula E — Pure Ratio / Scale Contrast
+Template: `{작은 시작 숫자}로 시작한 {주체}가 {짧은 기간} 만에 {압도적 결과 숫자}를 찍었음. {본인 규모 숫자}. {경쟁자 대조 숫자}.`
+
+Source: 150k view post (Medvi 1인 5,600억).
+```
+2,800만 원으로 시작한 1인 회사가 14개월 만에 매출 5,600억 원을 찍었음.
+직원은 본인 포함 2명. 경쟁사는 직원 2,400명.
+```
+
+Works when: the story lives inside a single extreme ratio (starting capital → revenue, team size → competitor size, effort → impact). The contrast IS the hook — no proper nouns needed in slide 1. Save the company/person name for slide 2.
+
+Exception to the "2 proper nouns" rule: if the ratio between any two numbers is > 100x, the contrast alone can carry slide 1. The reader will demand the proper nouns in slide 2 on their own.
+
+## Fail patterns (from JSup's weaker posts)
+
+### Pattern 1 — Scene description instead of fact density
+Bad example (from the 로봇 늑대 draft that didn't take off):
+```
+건물 안에 적이 있음.
+먼저 들어가는 건 병사가 아님.
+소총을 등에 진 로봇 개.
+병사는 그 뒤를 따라감.
+```
+Problem: zero numbers, one proper noun, no time marker, poetic rhythm. Reader has to work to understand relevance.
+
+### Pattern 2 — Paradox without numbers
+Bad example (from the 85k Apple 바이브코딩 post):
+```
+Apple이 바이브 코딩 앱을 앱스토어에서 막기 시작함.
+Replit, Vibecode 업데이트 차단. 근데 같은 시기에
+Apple이 자기 개발 도구 Xcode에는 AI 코딩 에이전트를 넣었음.
+```
+Problem: the contradiction is there, but zero numbers = no cognitive dissonance, no scale.
+
+### Pattern 3 — Insider jargon in slide 1
+Bad example (from the 57.5k Meta AI agent post):
+```
+...내부 보안 등급 Sev 1. 두 번째로 높은 심각도.
+```
+Problem: "Sev 1" / "심각도" filters out the non-engineer reader. Jargon lives in slide 3+, not slide 1.
+
+### Pattern 4 — Positive news with no reader stake
+Bad example (from the 51.4k Claude Architect post):
+```
+Anthropic이 "Claude Architect" 자격증을 만들었음.
+...개인 응시 불가. 파트너 조직 소속만.
+```
+Problem: it's news-neutral + the door is closed to the reader. No personal stake = no share.
+
+## Pre-draft hook checklist
+
+Run this BEFORE writing slide 2. If any box is unchecked, rewrite the hook.
+
+- [ ] Does slide 1 contain at least 3 concrete numbers? (Formula E winners hit 4-5)
+- [ ] Does slide 1 contain at least 2 proper nouns — OR a ratio between two numbers that is > 100x? (if ratio > 100x, proper nouns can move to slide 2)
+- [ ] Does slide 1 contain a specific time marker (date / duration / "어제" / "14개월 만에")?
+- [ ] Does slide 1 contain an extreme-state phrase or contrast (역사상 가장 / 시세의 10배 / 1인 vs 2,400명 / 같은 날)?
+- [ ] Does slide 1 either target a reader persona directly OR lead with an overwhelming scale number OR lead with an extreme ratio?
+- [ ] Does slide 1 avoid jargon that a non-engineer reader would not recognize?
+- [ ] If the reader only read slide 1, would they NEED slide 2 to make sense of it?
+- [ ] Is the hook written in 반말, clipped lines, no hype adjectives?
+
+## Core questions (preserved from original)
+
+- Does slide 1 create discomfort, contradiction, or curiosity?
+- Does slide 1 avoid explaining the full story?
+- If a reader only sees slide 1, do they still need slide 2?
+- Is the hook stated plainly rather than with hype words?
+- Is the hook targeted enough to make the right reader feel implicated?
+
+## Good pattern (preserved from original)
+
+- one surprising fact
+- one missing answer
+- calm delivery

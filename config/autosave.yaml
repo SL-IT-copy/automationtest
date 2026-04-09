@@ -1,0 +1,24 @@
+enabled: true
+silent: true
+overwrite_same_slug: true
+
+approved_signals:
+  explicit:
+    - 이걸로 올릴게
+    - 좋아
+    - 이거 써야겠다
+    - 확정
+  implicit:
+    - formatted_for_posting_request
+    - copy_paste_ready_request
+    - user_reposts_final_draft_in_chat
+
+paths:
+  published: content/published
+  reviews: reviews
+
+save_payload:
+  final_thread: true
+  source_urls: true
+  ceiling_score: true
+  review_artifacts: true

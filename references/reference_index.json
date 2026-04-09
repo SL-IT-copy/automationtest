@@ -112,6 +112,34 @@
     "parsed_text_file": "references/parsed/200k views.txt"
   },
   {
+    "file": "150kviews.docx",
+    "views": 150000,
+    "mode_hint": "thread",
+    "topic": "Medvi 1인 10억 달러 기업 / AI 극소수 인력 대규모 비즈니스",
+    "hook_type": "pure_ratio_contrast",
+    "hook_preview": [
+      "2,800만 원으로 시작한 1인 회사가 14개월 만에 매출 5,600억 원을 찍었음.",
+      "직원은 본인 포함 2명. 경쟁사는 직원 2,400명.",
+      "1",
+      "/",
+      "7"
+    ],
+    "first_lines": [
+      "2,800만 원으로 시작한 1인 회사가 14개월 만에 매출 5,600억 원을 찍었음.",
+      "직원은 본인 포함 2명. 경쟁사는 직원 2,400명.",
+      "1",
+      "/",
+      "7",
+      "jisang0914",
+      "14h",
+      "Matthew Gallagher. 41세. LA 거주. 2024년 9월, 2,800만 원과 AI 도구 십여 개로 원격진료 스타트업 Medvi를 만듦.",
+      "ChatGPT로 코드를 짜고 Claude로 웹사이트를 만들고 Midjourney로 광고 이미지를 뽑고 ElevenLabs로 고객 응대를 돌림.",
+      "GLP-1 다이어트 주사를 온라인으로 파는 구조. 첫 달 고객 300명. 둘째 달 1,300명. 2025년 연매출 5,600억 원. 순이익률 16.2% — 약 900억 원."
+    ],
+    "parsed_text_file": "references/parsed/150k_views.txt",
+    "notes": "Same topic as content/published/2026-04-06__medvi-one-person-billion.md. Hook uses pure ratio/contrast (2,800만→5,600억; 2명→2,400명) with zero proper nouns in slide 1. Adds Formula E to hook-check.md."
+  },
+  {
     "file": "109k_view.docx",
     "views": 109000,
     "mode_hint": "thread",

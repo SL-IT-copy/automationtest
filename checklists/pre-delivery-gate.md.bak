@@ -1,0 +1,265 @@
+# Pre-Delivery Gate
+
+**This is NOT a passive checklist. This is a MANDATORY procedure that MUST run before showing ANY draft to JSup.**
+
+If this gate has not been executed and documented in the response, the draft is not ready for delivery.
+
+## Why this exists
+
+Previous drafts (China robot wolves, Mercor, Copilot v1, Copilot v2) all needed revision rounds because the agent wrote drafts and then relied on JSup to catch errors. That is not a system — it is an interactive proofreading session.
+
+This gate exists so that the agent catches its own errors before JSup sees them.
+
+## Gate procedure (run in order)
+
+### Gate A — Product / Entity Mapping
+
+For every factual claim in the draft, answer:
+
+1. **What specific product, document, law, legal entity, or person does this claim apply to?**
+2. **Does the claim in my slide apply to the correct target?**
+3. **Am I implying a broader scope than my source supports?**
+
+Common failures this catches:
+- Consumer TOS quoted as if it applied to enterprise adoption (Copilot v1 error)
+- "KB금융" vs "KB라이프" (different legal subsidiaries)
+- "AI 학습 데이터 공급" claim applied to companies that are not actually customers
+- $5 liability cap from API product TOS applied to main subscription product
+
+If any claim fails this gate → fix the target, downgrade the claim, or drop it.
+
+### Gate B — Quote Precision
+
+For every quoted phrase (in quotation marks) in the draft, answer:
+
+1. **Is this a direct quote or a paraphrase?**
+2. **If direct: can I trace the exact words to a specific source?**
+3. **If paraphrase: is my wording tight enough not to be mistaken for a direct quote?**
+4. **Translation: does my Korean translation preserve the exact meaning and not editorialize?**
+
+Common failures this catches:
+- Fabricated quotes ("Meta: 1달러도 더 안 주겠다")
+- Inexact translations ("AI 안전이라는 말은 끝났다" vs actual "'lock it up' approach is dead")
+- Attribution chain confusion (TechCrunch → PCMag → the original quote)
+
+If any quote fails this gate → fix the wording or remove the quote.
+
+### Gate C — Cross-Outlet Verification for Critical Facts
+
+A "critical fact" is any number, causal claim, timeline, or company position that carries narrative weight.
+
+For every critical fact:
+
+1. **Do I have at least two independent sources at Tier 1–3 level?**
+2. **If only one source: is it a primary source (Tier 1) or do I need to downgrade?**
+3. **Are the sources describing the same product/entity/event or different ones?**
+
+### Gate C-1 — Numerical Cross-Check (NON-NEGOTIABLE)
+
+For EVERY specific number in the draft (size, count, money, dimension, percentage, date), the agent must:
+
+1. **Find the exact same number in at least 2 independent Tier 1–3 sources.**
+2. **If sources conflict on the number, document the conflict explicitly:**
+   - "Source A says X, Source B says Y, consensus appears to be Z"
+   - Pick the value supported by MORE sources OR the primary source (Tier 1)
+   - If unresolved, hedge with "약" / "approximately" / "~" or drop the specific number
+3. **Never trust a single Tier 2 source for a specific number when other Tier 2/Tier 1 sources exist on the same topic.**
+
+Why this exists: The Verge said "16 GW" for Stargate UAE compute. G42 official press release, Reuters, The National, Tom's Hardware, OpenAI official, HPCwire, and 5+ other outlets all say "1 GW." The agent had previously trusted The Verge's number without cross-checking, which would have published a 16x scale error.
+
+Common failures this catches:
+- Single-outlet claims treated as fact ("13개월 전에도 같은 실수")
+- Numerical claims from one viral post with no mainstream backup
+- Timeline claims from secondary sources
+- **A single mainstream outlet making a numerical error that no one else made**
+- **Missing a key partner/entity because only one source mentioned it**
+
+If any critical fact fails this gate → drop it, hedge it, or find more sources.
+
+### Required output format for Gate C
+
+```
+- [number/fact]: confirmed in [N] sources → [list source domains]
+- [number/fact]: SOURCE CONFLICT → Source A says X, Source B says Y, consensus = Z
+```
+
+If the agent has not actually performed the numerical cross-check and just wrote "PASS," that is procedural failure.
+
+### Gate D — Slide-by-Slide Tension Test
+
+For each slide, answer:
+
+1. **Does this slide CREATE tension or RELIEVE it?**
+2. **If a slide relieves tension, does it immediately create new tension?**
+3. **At the end of each slide, does the reader have a new question they need answered?**
+4. **Is any slide purely expository (no tension change)?**
+
+Common failures this catches:
+- Slides that explain away the contradiction mid-thread (Copilot v2 broke here)
+- "Detour" slides that add context but kill pacing
+- Slides where the only function is setup for the next slide (those should be compressed or merged)
+
+If any slide fails → restructure or compress.
+
+### Gate E — Adversarial Attack Simulation
+
+Imagine the three most likely hostile comments this thread will get. For each:
+
+1. **What is the most damaging attack a critical reader can make?**
+2. **Is the draft already defended against it (by phrasing, scope, or attribution)?**
+3. **If not: add one line that defends against it, or restructure to remove the vulnerability.**
+
+Common failure categories to imagine:
+- "You're oversimplifying X"
+- "You're comparing apples and oranges" (product mismatch)
+- "That quote is out of context"
+- "That's the opposite of what the source actually said"
+- "You're editorializing, not reporting"
+- "You're just hating on X company"
+
+If any attack has no defense → add defense or rewrite.
+
+### Gate F — First-Time Reader Test
+
+Read slide 1 as if you know nothing about the topic.
+
+1. **What do you expect the rest of the thread to be about?**
+2. **What question does slide 1 make you want answered?**
+3. **Does the actual thread answer that question?**
+4. **Are there any terms/names in slide 1 that a general reader would not understand?**
+
+If the thread doesn't deliver on slide 1's implicit promise → fix slide 1 or restructure.
+
+### Gate H — Internal Consistency Check
+
+For every claim that appears in multiple slides, verify:
+
+1. **Same numbers** across slides? (e.g., "약 4만 명" in slide 1 must not become "30,000명" in slide 6)
+2. **Same entity names** across slides? (e.g., don't mix "ChatGPT" in slide 1 with "OpenAI" in slide 3 if they refer to different concepts; pick consistent naming)
+3. **Same quote text** across slides? (translations of the same quote must be identical wherever quoted)
+4. **Same timeline** across slides? (e.g., "이번 주" in slide 1 cannot become "어제" in slide 4 unless the dates match)
+5. **Same angle/thesis**? Does the hook's implicit promise (slide 1) match what the close (final slide) actually delivers?
+
+Also check:
+- For every entity mentioned in slide 1: is it explained somewhere later?
+- For every promise in the hook (e.g., "이게 한국이랑 무슨 상관이냐"): is the promise actually delivered in the body?
+- Are there any contradictions between slides that a careful reader would spot?
+
+**Output format (STRICT — bare "PASS" is procedural failure):**
+```
+- Number consistency:
+  - [number/concept]: 
+    - Slide 1: "[exact text]" (= [normalized value])
+    - Slide 2: "[exact text]" (= [normalized value])
+    - VERDICT: same value? PASS / FAIL
+  - [Repeat for every number that appears more than once OR is expressed in mixed units]
+- Currency unit check: For every dollar/won figure, verify all slides use same value across unit conversions
+  - Example: "$122B in slide 2 ≠ 170조 원 in slide 1" → Slide 1 should be 약 171조, OR Slide 2 should be 약 1,220억 달러
+- Entity naming: [list each entity, confirm naming consistency]
+- Quote consistency: [list each repeated quote, confirm identical translation]
+- Timeline consistency: [list each time marker, confirm no drift]
+- Hook fulfillment: [hook implicit promise → does close deliver?]
+```
+
+**Critical**: A previous draft had "170조 원" in slide 1 and "1,200억 달러" in slide 2 — these appeared consistent in summary form but were actually different values ($121.4B vs $120B). The agent passed Gate H without catching this. The format above forces explicit unit-by-unit comparison to prevent recurrence.
+
+If ANY check fails → fix the inconsistency before delivery.
+
+### Gate G — Hook Power Benchmark (CRITICAL)
+
+Passing the hook-check.md compliance check is NOT enough. The hook must match one of the five winning patterns from JSup's own 100k+ posts. Compliance measures mechanics. This gate measures power.
+
+For the hook to pass Gate G, answer YES to at least ONE of the following:
+
+1. **Formula A (306k — direct reader targeting + pattern)**: Does the hook directly address a specific reader persona with "~한테 불편한 소식" or equivalent, followed by a 3-item pattern (time/company/entity)?
+
+2. **Formula B (215k — extreme title + bigger bet + timer)**: Does the hook feature a protagonist with a historically extreme past (lost/won record) making an even bigger bet with a named deadline?
+
+3. **Formula C (201k — unexpected subject + extreme action + ratio)**: Does the hook feature a subject the reader would NEVER expect to be the agent of a major story, performing a specific extreme action at a ratio >10x normal?
+
+4. **Formula D (109k — company + timestamp + reaction scale + paradigm)**: Does the hook feature a major company at a precise timestamp, with a reaction-scale number (millions of views, stock drop, competitor impact) and a paradigm declaration?
+
+5. **Formula E (150k — pure ratio / scale contrast)**: Does the hook contain 4+ numbers compressed into 2 lines, with at least one ratio >100x?
+
+If NO to all five → the hook is probably sub-150k ceiling even if it passes hook-check.md. Rewrite the hook to match one of the five formulas OR explicitly accept a lower ceiling.
+
+Special exception: "corporate paradox reveal" (e.g., "Microsoft says X in TOS but does Y") is NOT in the 150k+ winning patterns. It caps around 50-100k because the reader is a spectator, not implicated. To lift it above 100k, add a Formula A or E overlay (direct reader targeting or extreme ratio/number).
+
+**Verdict format:**
+```
+- Which formula does the hook match: A / B / C / D / E / NONE
+- If NONE: projected ceiling (50-100k / <50k)
+- If the ceiling is unacceptable: rewrite proposal
+```
+
+### Gate G+ — Hook Strength Score (CRITICAL, mandatory written justification)
+
+Score the hook out of 10 with WRITTEN justification for each component. A bare number without justification is procedural failure.
+
+| Component | Max | Criteria |
+|---|---|---|
+| **Number impact** | 0-3 | First 6 lines contain how many cognitive-dissonance numbers? 3 numbers = 3pts, 2 = 2pts, 1 = 1pt, 0 = 0pts |
+| **Tension verb** | 0-2 | Does the hook contain a strong action verb like 위협한다/잃었다/박았다/거절했다/뚫렸다? Yes = 2, weak verb = 1, none = 0 |
+| **Reader implication** | 0-2 | Direct targeting like "당신/매일 쓰는 사람/~한테"? Strong = 2, indirect implication = 1, none = 0 |
+| **Curiosity gap** | 0-2 | Forces reader to scroll to slide 2 to resolve? Strong = 2, weak = 1, resolved in slide 1 = 0 |
+| **Brand/entity weight** | 0-1 | Familiar proper nouns that carry weight? Yes = 1, generic = 0 |
+
+**Total score requirement: ≥ 7/10 to pass.**
+
+**Output format:**
+```
+- Number impact: X/3 → [list specific numbers found]
+- Tension verb: X/2 → [list verbs found]
+- Reader implication: X/2 → [explain who is being targeted]
+- Curiosity gap: X/2 → [what question forces slide 2 read]
+- Brand weight: X/1 → [list brand names]
+- TOTAL: X/10 → PASS / REWRITE
+```
+
+If score < 7 → mandatory rewrite with at least one weak component strengthened.
+
+## Gate output format
+
+When running this gate, the agent MUST produce this format before delivering the draft:
+
+```
+## Pre-Delivery Gate Report
+
+### Gate A — Product/Entity Mapping
+- [list of claims checked]
+- Verdict: PASS / FAIL (with specifics)
+
+### Gate B — Quote Precision
+- [list of quotes checked]
+- Verdict: PASS / FAIL
+
+### Gate C — Cross-Outlet Verification
+- [list of critical facts]
+- Verdict: PASS / FAIL
+
+### Gate D — Tension Test
+- Slide 1: creates / relieves
+- Slide 2: creates / relieves
+- ...
+- Verdict: PASS / FAIL
+
+### Gate E — Adversarial Attacks
+- Attack 1: [description] → [defense]
+- Attack 2: [description] → [defense]
+- Attack 3: [description] → [defense]
+- Verdict: PASS / FAIL
+
+### Gate F — First-Time Reader Test
+- Slide 1 implicit question: [question]
+- Thread answers it: yes / no
+- Verdict: PASS / FAIL
+
+### Overall: PASS / FAIL
+### If FAIL: what I'm fixing before delivery
+```
+
+Only after all gates PASS does the agent deliver the draft.
+
+## Hard rule
+
+If the agent ships a draft that does not include a Pre-Delivery Gate Report, that is a procedural failure, not a content failure. The agent must apologize and re-run the gate.

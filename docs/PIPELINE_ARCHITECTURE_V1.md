@@ -1,5 +1,9 @@
 # Pipeline Architecture V1
 
+> Status: historical architecture note. Superseded in practice by the current flat-file workflow built around `AGENTS.md`, `config/*.yaml`, `memory/`, and `reviews/`.
+
+> Do not treat Postgres/pgvector/object-store references here as active infrastructure unless explicitly revived later.
+
 ## Bottom line
 
 V1 should be a **single orchestrated workflow**, not a multi-agent swarm.

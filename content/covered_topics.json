@@ -55,6 +55,33 @@
       "keywords": ["로봇늑대", "로봇개", "군사AI", "스웜전투", "자율살상무기", "시가전", "유탄발사기", "暗影"],
       "theme": "AI 군사화 / 자율무기 현실화",
       "file": "content/published/2026-04-06__china-robot-wolf-pack.md"
+    },
+    {
+      "slug": "mercor-data-breach",
+      "date": "2026-04-06",
+      "title": "Mercor 데이터 유출 — 4만 명의 얼굴, 음성, 신분증",
+      "entities": ["Mercor", "OpenAI", "Anthropic", "Meta", "TeamPCP", "Trivy", "LiteLLM", "Lapsus$", "Marc Andreessen"],
+      "keywords": ["데이터유출", "공급망공격", "AI학습데이터", "영상면접", "KYC", "딥페이크", "집단소송", "Mercor"],
+      "theme": "AI 학습 데이터 공급망 보안 실패 + 노동자 생체정보 노출",
+      "file": "content/published/2026-04-06__mercor-data-breach.md"
+    },
+    {
+      "slug": "anthropic-openclaw-block",
+      "date": "2026-04-07",
+      "title": "Anthropic이 Claude 사용자에게서 12배 가치를 회수함 (OpenClaw 차단)",
+      "entities": ["Anthropic", "Claude", "OpenClaw", "Claude Cowork", "Boris Cherny", "Peter Steinberger"],
+      "keywords": ["OpenClaw", "구독차단", "12배", "third-party", "Claude Pro", "Claude Max", "용량위기", "IPO압박", "Claude Cowork"],
+      "theme": "AI 회사 closed ecosystem 강화 + 사용자 가치 회수",
+      "file": null
+    },
+    {
+      "slug": "openai-cfo-ceo-ipo-conflict",
+      "date": "2026-04-07",
+      "title": "OpenAI CFO가 자기 회사 IPO 반대 — 사상 최대 펀딩 마감 직후",
+      "entities": ["OpenAI", "Sarah Friar", "Sam Altman", "Fidji Simo", "Brad Lightcap", "The Information", "The New Yorker"],
+      "keywords": ["IPO반대", "CFO", "CEO충돌", "보고라인", "600B약속", "200B손실", "Anthropic경쟁", "unconstrained by truth", "The New Yorker"],
+      "theme": "OpenAI 내부 권력 충돌 + IPO 시점 분쟁",
+      "file": null
     }
   ]
 }

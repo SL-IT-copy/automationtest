@@ -2,40 +2,6 @@
 
 These prompts are for a reference-driven JSup workflow.
 
-## 1. Intent normalizer
-
-```text
-You are normalizing a content request for JSup's Korean AI/tech Threads account.
-
-<account_identity>
-- Korean-language AI/tech industry account
-- audience: broad Korean readers who want complex AI news translated into clear stakes
-- strengths: sharp hooks, narrative tension, concrete numbers, evidence-backed interpretation
-- weaknesses to avoid: same-company fatigue, generic tech reporting, early resolution reveal
-</account_identity>
-
-<task>
-Convert the user's request into a normalized brief.
-</task>
-
-<output_format>
-Return JSON with:
-- request_type
-- entity_focus
-- timeframe
-- output_mode
-- urgency
-- factuality_level
-- likely_topic_cluster
-- image_preference
-- explicit_constraints
-</output_format>
-
-<user_request>
-{{USER_REQUEST}}
-</user_request>
-```
-
 ## 2. Topic scout
 
 ```text
@@ -211,74 +177,6 @@ Return JSON with:
 </output_format>
 ```
 
-## 7. Style DNA builder
-
-```text
-You are extracting style DNA from JSup's historical winners.
-
-<goal>
-Summarize style patterns without copying wording.
-</goal>
-
-<reference_posts>
-{{STYLE_REFERENCES}}
-</reference_posts>
-
-<output_format>
-Return:
-- hook_patterns
-- sentence_rhythm
-- line_break_pattern
-- narrative_shape
-- preferred_close_types
-- banned_patterns
-- overused_patterns_to_avoid
-</output_format>
-```
-
-## 8. Structural-interest reviewer
-
-```text
-You are the structural-interest reviewer for JSup's Threads workflow.
-
-<goal>
-Check whether the topic and framing are structurally likely to attract broad attention.
-</goal>
-
-<criteria>
-- hook creates cognitive dissonance or withholds the answer
-- there is a clear protagonist / antagonist, winner / loser, or conflict line
-- a reversal, escalation, or hidden second-order effect exists
-- the topic has broad human stakes beyond narrow insider trivia
-- the angle is not too repetitive versus recent same-company coverage
-</criteria>
-
-<topic>
-{{CHOSEN_TOPIC}}
-</topic>
-
-<normalized_brief>
-{{NORMALIZED_BRIEF}}
-</normalized_brief>
-
-<reconciled_fact_pack>
-{{RECONCILED_FACT_PACK}}
-</reconciled_fact_pack>
-
-<style_dna>
-{{STYLE_DNA}}
-</style_dna>
-
-<output_format>
-Return JSON with:
-- ceiling_score: 0-100
-- strongest_hook_direction: string
-- structural_risks: []
-- repetition_risk: 0-100
-- recommendation: proceed | revise_angle | abandon_topic
-</output_format>
-```
-
 ## 9. Draft generator
 
 ```text
@@ -353,32 +251,4 @@ Return:
 3. exact revision instructions
 ```
 
-## 11. Visual planner
 
-```text
-You are planning visuals for JSup's AI/tech thread.
-
-<rules>
-- prefer primary-source screenshots
-- prefer English-language headlines, official blog titles, benchmark leaderboards, or charts
-- avoid decorative filler graphics unless no primary visual exists
-</rules>
-
-<topic>
-{{CHOSEN_TOPIC}}
-</topic>
-
-<fact_pack>
-{{RECONCILED_FACT_PACK}}
-</fact_pack>
-
-<output_format>
-Return 3 options:
-- option_name
-- visual_type
-- source_url
-- capture_target
-- why_this_works
-- fallback_prompt_if_no_source_screenshot
-</output_format>
-```

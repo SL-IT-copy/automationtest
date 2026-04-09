@@ -2,7 +2,7 @@
 
 - date: 2026-04-06
 - status: published
-- sources: arstechnica.com/tech-policy/2026/04/perplexitys-incognito-mode-is-a-sham-lawsuit-says/, theverge.com/ai-artificial-intelligence/906726/lawsuit-accuses-perplexity-of-sharing-conversations-with-meta-and-google, bloomberg.com/news/articles/2026-04-01/perplexity-ai-machine-accused-of-sharing-data-with-meta-google
+- sources: https://arstechnica.com/tech-policy/2026/04/perplexitys-incognito-mode-is-a-sham-lawsuit-says/, https://www.theverge.com/ai-artificial-intelligence/906726/lawsuit-accuses-perplexity-of-sharing-conversations-with-meta-and-google, https://www.bloomberg.com/news/articles/2026-04-01/perplexity-ai-machine-accused-of-sharing-data-with-meta-google
 - ceiling_score: 90/100
 - slide_count: 7
 
@@ -82,7 +82,7 @@ Google 대신 Perplexity를 쓴 이유가
 프라이버시 때문인 사람이 많음.
 결국 대화가 Google로 갔음.
 
-🔗 arstechnica.com/tech-policy/2026/04/perplexitys-incognito-mode-is-a-sham-lawsuit-says/
+🔗 https://arstechnica.com/tech-policy/2026/04/perplexitys-incognito-mode-is-a-sham-lawsuit-says/
 
 AI 업계 흐름, 계속 정리해서 올릴 예정.
 팔로우 해두면 놓치지 않음.

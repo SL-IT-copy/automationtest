@@ -1,0 +1,24 @@
+{
+  "dark": {
+    "background_gradient": ["#0a0a0a", "#1a1a2e"],
+    "text_color": "#FFFFFF",
+    "accent_color": "#39E508",
+    "caption_highlight_color": "#39E508",
+    "caption_base_color": "#FFFFFF",
+    "slide_number_color": "#666666",
+    "font_family": "Pretendard Variable",
+    "intro_bg": "#000000",
+    "outro_bg": "#0a0a0a"
+  },
+  "midnight_blue": {
+    "background_gradient": ["#0f0c29", "#302b63"],
+    "text_color": "#E0E0FF",
+    "accent_color": "#00D4FF",
+    "caption_highlight_color": "#00D4FF",
+    "caption_base_color": "#E0E0FF",
+    "slide_number_color": "#4a4a7a",
+    "font_family": "Pretendard Variable",
+    "intro_bg": "#0f0c29",
+    "outro_bg": "#0f0c29"
+  }
+}

@@ -1,0 +1,57 @@
+priority_order:
+  - x
+  - official
+  - primary_documents
+  - communities
+  - article_assist
+  - general_search
+
+catalog:
+  file: config/source_catalog.json
+  purpose: live source list and source metadata supplement
+
+sources:
+  x:
+    method: scripts/x-search.sh
+    purpose: real_time_trends_and_viral_posts
+    required: true
+
+  official:
+    domains:
+      - openai.com
+      - anthropic.com
+      - blog.google
+      - deepmind.google
+      - ai.google.dev
+    purpose: first_party_announcements
+
+  communities:
+    channels:
+      - Hacker News
+      - Reddit
+      - r/LocalLLaMA
+      - r/MachineLearning
+      - r/artificial
+      - GitHub trend signals
+    note: use search/fetch methods that are stable in this environment
+
+  article_assist:
+    domains:
+      - techcrunch.com
+      - venturebeat.com
+      - theverge.com
+      - arstechnica.com
+      - bloomberg.com
+    purpose: corroboration_and_context
+
+  general_search:
+    provider: exa
+    purpose: catch_anything_missed
+
+  primary_documents:
+    examples:
+      - court complaints
+      - SEC filings
+      - official benchmarks
+      - research papers
+    purpose: hard_fact_validation

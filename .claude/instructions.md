@@ -2,12 +2,17 @@
 
 ## 세션 시작 시 반드시 읽을 파일
 
-1. `SOUL.md` — 계정 정체성, 채널 원칙, hook 규칙, 포맷 규칙, 퀄리티 게이트
-2. `WORKFLOW.md` — 작동 방식, 트리거 명령어, 출력 형식, 이중 검증 규칙
-3. `docs/DIRECT_CLAUDE_WORKFLOW.md` — 전체 파이프라인 흐름
-4. `docs/TRIGGER_COMMANDS.md` — 사용 가능한 트리거 명령어
-5. `prompts/THREADS_PIPELINE_PROMPTS.md` — 11단계 프롬프트 체인
-6. `references/reference_index.json` — 고성과 레퍼런스 인덱스
+1. `AGENTS.md` — 전체 운영 규칙, 파일 책임, hard boundaries
+2. `CLAUDE.md` — Claude/OpenCode 세션 로더
+3. `SOUL.md` — 계정 정체성, 보이스, hook 규칙, 포맷 규칙
+4. `config/pipeline.yaml` — 기계적으로 읽는 파이프라인 설정
+5. `config/sources.yaml` — 소스 우선순위
+6. `config/xactions.yaml` — X 검색 설정
+7. `config/autosave.yaml` — 자동 저장 규칙
+8. relevant files in `checklists/` — hook / fact / pacing / final gate
+9. `prompts/THREADS_PIPELINE_PROMPTS.md` — 11단계 프롬프트 체인
+10. `references/reference_index.json` — 고성과 레퍼런스 인덱스
+11. recent files in `content/published/` and `memory/cold/`
 
 레퍼런스를 읽을 때는 `references/parsed/` 디렉토리의 실제 텍스트도 함께 읽을 것.
 특히 상위 성과 글(306k, 215k, 201k, 200k, 109k)의 hook 구조, 줄바꿈 리듬, 반전 위치, 마감 패턴을 파악해둘 것.
@@ -17,11 +22,17 @@
 - 글 생성은 여기 Claude 세션 안에서 직접 수행
 - OAuth는 Threads 게시/인증용. 콘텐츠 생성과는 무관
 - `config/source_catalog.json`에 라이브 소스 목록 있음
+- X 검색은 `scripts/x-search.sh`를 canonical entrypoint로 사용
 
-## 강제 검증 체크리스트 (모든 serious request에 적용)
+## 강제 검증 체크리스트 (모든 실제 thread 요청에 적용)
 
 글 생성 요청이 들어오면, 아래 순서를 반드시 따를 것.
 순서를 건너뛰거나 축약하지 말 것.
+
+### Step 0: 중복 / 피로도 체크
+- `content/covered_topics.json` 확인
+- 최근 2포스트와 같은 회사 / 같은 앵글이면 기본적으로 회피
+- materially new angle 아니면 topic scout 단계에서 제외
 
 ### Step 1: 소스 수집
 - web search로 현재 시점 소스 최소 3개 확보

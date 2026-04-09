@@ -1,0 +1,30 @@
+{
+  "name": "jsup-thread-video",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render ThreadVideo",
+    "build": "remotion bundle",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "remotion": "^4.0.0",
+    "@remotion/cli": "^4.0.0",
+    "@remotion/captions": "^4.0.0",
+    "@remotion/transitions": "^4.0.0",
+    "@remotion/media": "^4.0.0",
+    "@remotion/media-utils": "^4.0.0",
+    "@remotion/layout-utils": "^4.0.0",
+    "@remotion/fonts": "^4.0.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/react": "^18.3.0",
+    "vitest": "^1.6.0",
+    "prettier": "^3.2.0"
+  }
+}

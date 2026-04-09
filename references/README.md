@@ -20,6 +20,7 @@ They should **not** be used for copying wording.
 
 Primary style references:
 
+- 150kviews.docx
 - 109k_view.docx
 - 200k views.docx
 - 201k views.docx
@@ -28,10 +29,14 @@ Primary style references:
 
 These should dominate style retrieval.
 
+Note: `150kviews.docx` is especially useful for hooks built on extreme ratio contrast
+(small starting capital / tiny team / massive output) even when slide 1 delays the proper nouns until slide 2.
+
 ### Tier 2 — JSup's weaker posts
 
 Contrast references:
 
+- 85k_views.docx
 - 43k_view.docx
 - 51.4k_views.docx
 - 57.5k_views.docx

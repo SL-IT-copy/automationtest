@@ -2,7 +2,7 @@
 
 - date: 2026-04-06
 - status: published
-- sources: nytimes.com/2026/04/02/technology/ai-billion-dollar-company-medvi.html
+- sources: https://www.nytimes.com/2026/04/02/technology/ai-billion-dollar-company-medvi.html
 - ceiling_score: 90/100
 - slide_count: 7
 
@@ -77,7 +77,7 @@ AI가 2,400명의 일을 2명으로 압축할 수 있다는 건 증명됐음.
 증명 안 된 건 하나.
 그게 괜찮은 건지.
 
-🔗 nytimes.com/2026/04/02/technology/ai-billion-dollar-company-medvi.html
+🔗 https://www.nytimes.com/2026/04/02/technology/ai-billion-dollar-company-medvi.html
 
 AI 업계 흐름, 계속 정리해서 올릴 예정.
 팔로우 해두면 놓치지 않음.

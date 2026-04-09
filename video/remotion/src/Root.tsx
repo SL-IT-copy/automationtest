@@ -1,0 +1,82 @@
+import React from "react";
+import { Composition } from "remotion";
+import { ThreadVideo } from "./compositions/ThreadVideo";
+import { calculateMetadata } from "./calculate-metadata";
+import { VideoSpecSchema } from "./types";
+import type { VideoSpec } from "./types";
+import { WIDTH, HEIGHT, FPS } from "./constants";
+
+const defaultProps: VideoSpec = {
+  id: "2026-04-06__sample-test-thread",
+  title: "Sample test thread",
+  created_at: "2026-04-06T14:30:00+09:00",
+  settings: {
+    width: WIDTH,
+    height: HEIGHT,
+    fps: FPS,
+    theme: "dark",
+    background_music: "ambient_loop.mp3",
+    background_music_volume: 0.08,
+    transition_duration_frames: 15,
+  },
+  intro: { duration_seconds: 0.5, handle: "@jisang0914", logo_text: "JSup" },
+  outro: {
+    duration_seconds: 2.0,
+    cta_text: "AI 업계 흐름, 계속 정리해서 올릴 예정.\n팔로우 해두면 놓치지 않음.",
+    handle: "@jisang0914",
+  },
+  slides: [
+    {
+      slide_number: 1,
+      total_slides: 3,
+      text: "Perplexity에서\n시크릿 모드를 켜고 검색해도\n대화가 Meta랑 Google에\n가고 있었음.\n\n3년 동안.",
+      audio_file: "slide_01.mp3",
+      captions_file: "slide_01_captions.json",
+      duration_ms: 5200,
+      theme_override: null,
+    },
+    {
+      slide_number: 2,
+      total_slides: 3,
+      text: "Perplexity는 검색 결과를\n\"제3자와 공유하지 않는다\"고\n명시해놓고\n\n실제로는 Meta Pixel이랑\nGoogle Analytics가\n전부 수집하고 있었음.",
+      audio_file: "slide_02.mp3",
+      captions_file: "slide_02_captions.json",
+      duration_ms: 8100,
+      theme_override: null,
+    },
+    {
+      slide_number: 3,
+      total_slides: 3,
+      text: "집단 소송이 제기됨.\n\nAI 회사들이\n\"프라이버시를 중시한다\"는 말,\n이제 글자 그대로 믿기 어려움.",
+      audio_file: "slide_03.mp3",
+      captions_file: "slide_03_captions.json",
+      duration_ms: 6300,
+      theme_override: null,
+    },
+  ],
+  youtube: {
+    title: "Perplexity 시크릿 모드, 3년간 데이터 유출 | AI 뉴스",
+    description: "Perplexity 시크릿 모드 대화 유출 사건",
+    tags: ["AI", "Perplexity", "프라이버시"],
+    category_id: "28",
+    default_language: "ko",
+    playlist_id: null,
+    contains_synthetic_media: true,
+  },
+};
+
+export const RemotionRoot: React.FC = () => {
+  return (
+    <Composition
+      id="ThreadVideo"
+      component={ThreadVideo}
+      width={WIDTH}
+      height={HEIGHT}
+      fps={FPS}
+      durationInFrames={300}
+      schema={VideoSpecSchema}
+      defaultProps={defaultProps}
+      calculateMetadata={calculateMetadata}
+    />
+  );
+};
